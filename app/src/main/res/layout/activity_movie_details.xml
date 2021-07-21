@@ -33,7 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/view2"
         app:layout_constraintStart_toStartOf="parent">
-        <!--Подчеркивание таба-->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -101,7 +101,7 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="10dp"
-                android:text="@string/restrictionAge"
+                android:text="@string/restriction_age"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -115,7 +115,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/filmDate"
+                android:text="@string/film_date"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/textViewFilmName"
@@ -129,7 +129,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_text_view_film_genre"
-                android:text="@string/filmGenre"
+                android:text="@string/film_genre"
                 android:textColor="@color/black"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toTopOf="@id/textViewFilmName"
@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/filmName"
+                android:text="@string/film_name"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -156,7 +156,7 @@
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic__star" />
+                app:srcCompat="@drawable/ic_star" />
 
             <ImageView
                 android:id="@+id/imageViewStar2"
@@ -166,7 +166,7 @@
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintStart_toEndOf="@id/imageViewStar1"
-                app:srcCompat="@drawable/ic__star" />
+                app:srcCompat="@drawable/ic_star" />
 
             <ImageView
                 android:id="@+id/imageViewStar3"
@@ -176,7 +176,7 @@
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintStart_toEndOf="@id/imageViewStar2"
-                app:srcCompat="@drawable/ic__star" />
+                app:srcCompat="@drawable/ic_star" />
 
             <ImageView
                 android:id="@+id/imageViewStar4"
@@ -186,7 +186,7 @@
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintStart_toEndOf="@id/imageViewStar3"
-                app:srcCompat="@drawable/ic__star" />
+                app:srcCompat="@drawable/ic_star" />
 
             <ImageView
                 android:id="@+id/imageViewStar5"
@@ -196,7 +196,7 @@
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintStart_toEndOf="@id/imageViewStar4"
-                app:srcCompat="@drawable/ic__star_empty" />
+                app:srcCompat="@drawable/ic_star_empty" />
 
             <TextView
                 android:id="@+id/textView"
@@ -205,7 +205,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="36dp"
-                android:text="@string/filmDescription"
+                android:text="@string/film_description"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/textViewActors"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/actorsString"
+                android:text="@string/actors_string"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@id/horizontalScrollViewActors"
@@ -266,7 +266,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
-                                android:text="@string/actorNameJasonStatham"
+                                android:text="@string/actor_name_jason_statham"
                                 android:textColor="@color/black"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
@@ -301,7 +301,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
-                                android:text="@string/actorNameHoltMcCallany"
+                                android:text="@string/actor_name_holt_mc_callany"
                                 android:textColor="@color/black"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
@@ -337,7 +337,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
-                                android:text="@string/actorNameJoshHartnett"
+                                android:text="@string/actor_name_josh_hartnett"
                                 android:textColor="@color/black"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
