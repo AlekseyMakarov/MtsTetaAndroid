@@ -1,29 +1,42 @@
 package com.example.mtstetaandroid
 
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.LayerDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.example.mtstetaandroid.data.dto.MovieDto
-import ru.mts.teta.summer.android.homework.list.data.features.movies.MoviesDataSourceImpl
+import android.widget.RatingBar
+import androidx.core.graphics.drawable.toBitmap
 
 class MainActivity : AppCompatActivity() {
 	private lateinit var moviesModel: MoviesModel
-	
+
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.movies_list)
-		val recycler = findViewById<RecyclerView>(R.id.recyclerViewGenres)
-		val genres = listOf("боевик", "драма", "мелодрама", "ужасы", "триллеры", "комедии", "хаус", "про войну", "документальные")
-		val adapter = GenreAdapter()
-		adapter.setData(genres)
-		recycler.adapter = adapter
-		recycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+		setContentView(R.layout.movie_item)
+		val rating = findViewById<RatingBar>(R.id.rb_rating)
+		val starEmptyBitmap = getDrawable(R.drawable.ic_star_empty)?.toBitmap(20, 20)
+		val starBitmap = getDrawable(R.drawable.ic_star)?.toBitmap(20, 20)
+		val newStarEmptyDrawable = BitmapDrawable(resources, starEmptyBitmap)
+		val newStarDrawable = BitmapDrawable(resources, starBitmap)
+
+		val finalDrawable = LayerDrawable(
+			arrayOf(
+				newStarEmptyDrawable,
+				newStarEmptyDrawable,
+				newStarDrawable,
+			)
+		)
+		finalDrawable.setId(0, android.R.id.background)
+		finalDrawable.setId(1, android.R.id.secondaryProgress)
+		finalDrawable.setId(2, android.R.id.progress)
+		rating.setProgressDrawableTiled(finalDrawable)
+//		val recycler = findViewById<RecyclerView>(R.id.recyclerViewGenres)
+//		val genres = listOf("боевик", "драма", "мелодрама", "ужасы", "триллеры", "комедии", "хаус", "про войну", "документальные")
+//		val adapter = GenreAdapter()
+//		adapter.setData(genres)
+//		recycler.adapter = adapter
+//		recycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 		
 //		initDataSource()
 //		setupViews()
