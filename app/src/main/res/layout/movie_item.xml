@@ -69,7 +69,7 @@
             android:paddingTop="7dp"
             android:paddingEnd="7dp"
             android:paddingBottom="7dp"
-            android:text="@string/restrictionAge"
+            android:text="@string/restriction_age"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="7sp"

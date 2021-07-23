@@ -24,7 +24,7 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private var scaledRatingDrawable: Drawable? = null
 
-    private var callback: ((String?)->Unit)? = null
+    private var callback: ((String?) -> Unit)? = null
 
     private fun createScaledRatingDrawable(context: Context): Drawable {
         val starEmptyBitmap = getDrawable(context, R.drawable.ic_star_empty)?.toBitmap()
@@ -66,7 +66,7 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MovieAdapter.ViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it, movies?.size ?: 0, callback) }
+        getItem(position)?.let { holder.bind(it, callback) }
 
     }
 
@@ -85,31 +85,22 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     private fun getItem(position: Int): MovieDto? = movies?.get(position)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        private val genreName: TextView = itemView.findViewById(R.id.textViewFilmGenreItem)
         private val movieImage: ImageView = itemView.findViewById(R.id.roundedImageViewMovie)
         private val movieTitle: TextView = itemView.findViewById(R.id.textViewMovieTitle)
-        private val movieDescription: TextView = itemView.findViewById(R.id.textViewMovieDescription)
+        private val movieDescription: TextView =
+            itemView.findViewById(R.id.textViewMovieDescription)
         private val movieRating: RatingBar = itemView.findViewById(R.id.ratingBarMovieRating)
-        private val movieAgeRestriction: TextView = itemView.findViewById(R.id.textViewMovieAgeRestrictions)
+        private val movieAgeRestriction: TextView =
+            itemView.findViewById(R.id.textViewMovieAgeRestrictions)
 
 
-        fun bind(Movie: MovieDto, position: Int, callback: ((String?) -> Unit)?) {
-//            when (this.adapterPosition) {
-//                0 -> {
-//                    itemView.setMarginInDp(start = 20F)
-//                }
-//                size - 1 -> {
-//                    itemView.setMarginInDp(end = 20F)
-//                }
-//            }
-
-
+        fun bind(Movie: MovieDto, callback: ((String?) -> Unit)?) {
             movieImage.load(Movie.imageUrl)
             movieTitle.text = Movie.title
             movieDescription.text = Movie.description
             movieRating.rating = Movie.rateScore.toFloat()
             movieAgeRestriction.text = Movie.ageRestriction.toString() + "+"
-            callback?.let { itemView.setOnClickListener { callback(Movie.title) }}
+            callback?.let { itemView.setOnClickListener { callback(Movie.title) } }
         }
     }
 

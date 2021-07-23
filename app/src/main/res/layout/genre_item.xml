@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="6dp"
     android:background="@drawable/bg_text_view_film_genre"
-    android:text="@string/filmGenre"
+    android:text="@string/film_genre"
     android:textColor="@color/black"
     android:textSize="10sp"
     />
