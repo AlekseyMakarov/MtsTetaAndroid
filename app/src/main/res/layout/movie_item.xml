@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="#00000000"
+    android:layout_height="365dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,16 +20,16 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/roundedImageView"
+                android:id="@+id/roundedImageViewMovie"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="216dp"
                 android:scaleType="centerCrop"
 
                 android:src="@drawable/jason_statham" />
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textViewMovieTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -40,7 +43,25 @@
             app:lineHeight="14sp" />
 
         <TextView
-            android:id="@+id/textViewAgeRestrictions"
+            android:id="@+id/textViewMovieDescription"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:ellipsize="end"
+            android:text="TextView00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewMovieAgeRestrictions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMovieTitle"
+            app:lineHeight="14sp" />
+
+        <TextView
+            android:id="@+id/textViewMovieAgeRestrictions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_text_view_age_restrictions"
@@ -57,15 +78,15 @@
             app:lineHeight="8sp" />
 
         <RatingBar
-            android:id="@+id/rb_rating"
+            android:id="@+id/ratingBarMovieRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:isIndicator="true"
             android:clickable="false"
+            android:isIndicator="true"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
             android:numStars="5"
             android:progressDrawable="@null"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
             android:rating="3"
             android:stepSize="0.5"
             app:layout_constraintBottom_toBottomOf="parent"

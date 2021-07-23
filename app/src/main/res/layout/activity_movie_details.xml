@@ -91,7 +91,7 @@
 
 
             <TextView
-                android:id="@+id/textViewAgeRestrictions"
+                android:id="@+id/textViewMovieAgeRestrictions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
