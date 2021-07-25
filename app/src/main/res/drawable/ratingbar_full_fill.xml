@@ -18,5 +18,4 @@
         android:drawable="@drawable/ic_star" />
 
     <item android:drawable="@drawable/ic_star" />
-
 </selector>

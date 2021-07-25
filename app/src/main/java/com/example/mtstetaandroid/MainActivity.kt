@@ -11,11 +11,14 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mtstetaandroid.data.GenresModel
 import com.example.mtstetaandroid.data.dto.MovieDto
+import ru.mts.teta.summer.android.homework.list.data.features.movies.GenresDataSourceImpl
 import ru.mts.teta.summer.android.homework.list.data.features.movies.MoviesDataSourceImpl
 
 class MainActivity : AppCompatActivity() {
     private lateinit var moviesModel: MoviesModel
+    private lateinit var genresModel: GenresModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,17 +26,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.movies_list)
 
         val recycler = findViewById<RecyclerView>(R.id.recyclerViewGenres)
-        val genres = listOf(
-            "боевик",
-            "драма",
-            "мелодрама",
-            "ужасы",
-            "триллеры",
-            "комедии",
-            "хаус",
-            "про войну",
-            "документальные"
-        )
+        initGenresSource()
+        val genres = genresModel.getGenres()
         val adapter = GenreAdapter()
         adapter.setData(genres)
         recycler.adapter = adapter
@@ -70,6 +64,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initDataSource() {
         moviesModel = MoviesModel(MoviesDataSourceImpl())
+    }
+    private fun initGenresSource() {
+        genresModel = GenresModel(GenresDataSourceImpl())
     }
 
 

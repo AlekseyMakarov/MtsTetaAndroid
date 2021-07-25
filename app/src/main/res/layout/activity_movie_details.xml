@@ -24,14 +24,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ImageView.Corner"
-        app:srcCompat="@drawable/jason_statham" />
+        app:srcCompat="@drawable/image_jason_statham" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/view"
+        android:id="@+id/constraintLayoutHomeTab"
         android:layout_width="0dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/view2"
+        app:layout_constraintEnd_toStartOf="@id/constraintLayoutUserTab"
         app:layout_constraintStart_toStartOf="parent">
 
         <View
@@ -53,12 +53,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/view2"
+        android:id="@+id/constraintLayoutUserTab"
         android:layout_width="0dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/view">
+        app:layout_constraintStart_toEndOf="@id/constraintLayoutHomeTab">
 
         <ImageView
             android:id="@+id/imageViewUser"
@@ -77,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/view"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayoutHomeTab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/negative_margin">
@@ -259,7 +259,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/jason_statham_actor" />
+                                app:srcCompat="@drawable/image_jason_statham_actor" />
 
                             <TextView
                                 android:id="@+id/textViewActorName1"
@@ -294,7 +294,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/holt_mccallany_actor" />
+                                app:srcCompat="@drawable/image_holt_mccallany_actor" />
 
                             <TextView
                                 android:id="@+id/textViewActorName2"
@@ -330,7 +330,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/josh_hartnett_actor" />
+                                app:srcCompat="@drawable/image_josh_hartnett_actor" />
 
                             <TextView
                                 android:id="@+id/textViewActorName3"

@@ -18,12 +18,8 @@ import com.example.mtstetaandroid.data.dto.MovieDto
 
 
 class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-
-
     private var movies: List<MovieDto>? = null
-
     private var scaledRatingDrawable: Drawable? = null
-
     private var callback: ((String?) -> Unit)? = null
 
     private fun createScaledRatingDrawable(context: Context): Drawable {
@@ -31,7 +27,6 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         val starBitmap = getDrawable(context, R.drawable.ic_star)?.toBitmap()
         val newStarEmptyDrawable = BitmapDrawable(context.resources, starEmptyBitmap)
         val newStarDrawable = BitmapDrawable(context.resources, starBitmap)
-
         val finalDrawable = LayerDrawable(
             arrayOf(
                 newStarEmptyDrawable,
@@ -42,12 +37,10 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         finalDrawable.setId(0, android.R.id.background)
         finalDrawable.setId(1, android.R.id.secondaryProgress)
         finalDrawable.setId(2, android.R.id.progress)
-
         return finalDrawable
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieAdapter.ViewHolder {
-
         if (scaledRatingDrawable == null) {
             scaledRatingDrawable = createScaledRatingDrawable(parent.context)
         }
@@ -67,7 +60,6 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: MovieAdapter.ViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it, callback) }
-
     }
 
     override fun getItemCount(): Int {
@@ -93,7 +85,6 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         private val movieAgeRestriction: TextView =
             itemView.findViewById(R.id.textViewMovieAgeRestrictions)
 
-
         fun bind(Movie: MovieDto, callback: ((String?) -> Unit)?) {
             movieImage.load(Movie.imageUrl)
             movieTitle.text = Movie.title
@@ -103,5 +94,4 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
             callback?.let { itemView.setOnClickListener { callback(Movie.title) } }
         }
     }
-
 }
