@@ -42,18 +42,18 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@id/constraintLayoutHomeTab"
+        app:layout_constraintBottom_toTopOf="@id/viewHomeTab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recyclerViewGenres" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayoutHomeTab"
+        android:id="@+id/viewHomeTab"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/constraintLayoutUserTab"
+        app:layout_constraintEnd_toStartOf="@id/viewUserTab"
         app:layout_constraintStart_toStartOf="parent">
 
         <View
@@ -75,13 +75,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayoutUserTab"
+        android:id="@+id/viewUserTab"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/constraintLayoutHomeTab">
+        app:layout_constraintStart_toEndOf="@id/viewHomeTab">
 
         <ImageView
             android:id="@+id/imageViewUser"
