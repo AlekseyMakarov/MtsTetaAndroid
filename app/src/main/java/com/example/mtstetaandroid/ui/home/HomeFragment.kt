@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mtstetaandroid.*
 import com.example.mtstetaandroid.data.GenresModel
+import com.example.mtstetaandroid.data.dto.MovieDto
 //import com.example.mtstetaandroid.ui.home.HomeViewModel
 import com.google.android.material.internal.ViewUtils.dpToPx
 import ru.mts.teta.summer.android.homework.list.data.features.movies.GenresDataSourceImpl
@@ -110,14 +111,15 @@ class HomeFragment : Fragment() {
     }
 
 
-    fun showToast(message: String?) {
-        val detailsFragment = DetailsFragment()
-        childFragmentManager.beginTransaction().add(R.id.fragment_container_details, detailsFragment).addToBackStack(null).commit()
+    fun showToast(message: String?, movie: MovieDto?) {
+
+
         when {
             message.isNullOrEmpty() -> {
-                showToast(getString(R.string.main_empty_message))
+                showToast(getString(R.string.main_empty_message), moviesModel.getMovies()[0])
             }
-            else -> Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            else -> {Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                childFragmentManager.beginTransaction().add(R.id.fragment_container_details, DetailsFragment.newInstance(message, movie!!)).addToBackStack(null).commit()}
         }
     }
 
