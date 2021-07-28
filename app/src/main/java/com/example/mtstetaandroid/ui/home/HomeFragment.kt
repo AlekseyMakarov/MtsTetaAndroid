@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mtstetaandroid.*
 import com.example.mtstetaandroid.data.GenresModel
 import com.example.mtstetaandroid.data.dto.MovieDto
-//import com.example.mtstetaandroid.ui.home.HomeViewModel
 import com.google.android.material.internal.ViewUtils.dpToPx
 import ru.mts.teta.summer.android.homework.list.data.features.movies.GenresDataSourceImpl
 import ru.mts.teta.summer.android.homework.list.data.features.movies.MoviesDataSourceImpl
@@ -29,28 +28,13 @@ class HomeFragment : Fragment() {
 
     private lateinit var moviesModel: MoviesModel
     private lateinit var genresModel: GenresModel
-//    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-//        homeViewModel =
-//                ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_home)
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-
-
-
-
-
-
-
-
         val recycler = root.findViewById<RecyclerView>(R.id.recyclerViewGenres)
         initGenresSource()
         val genres = genresModel.getGenres()
@@ -58,14 +42,11 @@ class HomeFragment : Fragment() {
         adapter.setData(genres)
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(root.context, RecyclerView.HORIZONTAL, false)
-
-
         val recyclerMovie = root.findViewById<RecyclerView>(R.id.recyclerViewMovies)
         initDataSource()
-
         val movies = moviesModel.getMovies()
         val adapterMovie = MovieAdapter()
-        adapterMovie.setOnClickListener(::showToast)
+        adapterMovie.setOnClickListener(::showDetails)
         adapterMovie.setData(movies)
         recyclerMovie.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(outRect: Rect, itemPosition: Int, parent: RecyclerView) {
@@ -84,49 +65,27 @@ class HomeFragment : Fragment() {
             }
         })
         recyclerMovie.adapter = adapterMovie
-        recyclerMovie.layoutManager = GridLayoutManager(root.context, 2, RecyclerView.VERTICAL, false)
-
-
-
-
-
-
-
-
-
+        recyclerMovie.layoutManager =
+            GridLayoutManager(root.context, 2, RecyclerView.VERTICAL, false)
         return root
     }
-
-
-
-
-
 
 
     private fun initDataSource() {
         moviesModel = MoviesModel(MoviesDataSourceImpl())
     }
+
     private fun initGenresSource() {
         genresModel = GenresModel(GenresDataSourceImpl())
     }
 
 
-    fun showToast(message: String?, movie: MovieDto?) {
-
-
-        when {
-            message.isNullOrEmpty() -> {
-                showToast(getString(R.string.main_empty_message), moviesModel.getMovies()[0])
-            }
-            else -> {Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-                childFragmentManager.beginTransaction().add(R.id.fragment_container_details, DetailsFragment.newInstance(message, movie!!)).addToBackStack(null).commit()}
-        }
+    fun showDetails(movie: MovieDto?) {
+        childFragmentManager.beginTransaction().add(
+            R.id.fragment_container_details,
+            DetailsFragment.newInstance(movie!!)
+        ).addToBackStack(null).commit()
     }
-
-
-
-
-
 }
 
 
