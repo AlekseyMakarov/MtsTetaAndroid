@@ -12,6 +12,5 @@
     <string name="main_empty_message">empty toast</string>
 
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_user">User</string>
 </resources>

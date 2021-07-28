@@ -14,24 +14,22 @@ import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.mtstetaandroid.R
 import com.example.mtstetaandroid.data.dto.MovieDto
 import com.example.mtstetaandroid.dpToPx
-import com.example.mtstetaandroid.ui.dashboard.DashboardViewModel
 
 class DetailsFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
     private var scaledRatingDrawable: Drawable? = null
 
 
     private fun createScaledRatingDrawable(context: Context): Drawable {
 
-        val starEmptyBitmap = AppCompatResources.getDrawable(context, R.drawable.ic_star_empty)?.toBitmap(context.dpToPx(15F), context.dpToPx(15F))
-        val starBitmap = AppCompatResources.getDrawable(context, R.drawable.ic_star)?.toBitmap(context.dpToPx(15F),context.dpToPx(15F))
+        val starEmptyBitmap = AppCompatResources.getDrawable(context, R.drawable.ic_star_empty)
+            ?.toBitmap(context.dpToPx(15F), context.dpToPx(15F))
+        val starBitmap = AppCompatResources.getDrawable(context, R.drawable.ic_star)
+            ?.toBitmap(context.dpToPx(15F), context.dpToPx(15F))
         val newStarEmptyDrawable = BitmapDrawable(context.resources, starEmptyBitmap)
         val newStarDrawable = BitmapDrawable(context.resources, starBitmap)
         val finalDrawable = LayerDrawable(
@@ -48,9 +46,9 @@ class DetailsFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 //        dashboardViewModel =
 //                ViewModelProvider(this).get(DashboardViewModel::class.java)
@@ -64,14 +62,15 @@ class DetailsFragment : Fragment() {
         }
 
 
-
-
         val imageView = root.findViewById<ImageView>(R.id.imageView)?.apply {
-           this.load(arguments?.getString("movie_image_url"))
+            this.load(arguments?.getString("movie_image_url")) {
+                allowHardware(false)
+            }
         }
-        val textViewAgeRestriction = root.findViewById<TextView>(R.id.textViewMovieAgeRestrictions)?.apply {
-            text = arguments?.getInt("movie_age_restriction").toString() + "+"
-        }
+        val textViewAgeRestriction =
+            root.findViewById<TextView>(R.id.textViewMovieAgeRestrictions)?.apply {
+                text = arguments?.getInt("movie_age_restriction").toString() + "+"
+            }
         val textViewDescription = root.findViewById<TextView>(R.id.textView)?.apply {
             text = arguments?.getString("movie_description")
         }
@@ -97,9 +96,8 @@ class DetailsFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(message: String, movie: MovieDto): DetailsFragment {
+        fun newInstance(movie: MovieDto): DetailsFragment {
             val args = Bundle()
-            args.putString("MTS", message)
             args.putString("movie_title", movie.title)
             args.putString("movie_description", movie.description)
             args.putString("movie_image_url", movie.imageUrl)
