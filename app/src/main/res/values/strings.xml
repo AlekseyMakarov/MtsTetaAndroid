@@ -9,4 +9,5 @@
     <string name="actor_name_jason_statham">Джейсон Стейтем</string>
     <string name="actor_name_holt_mc_callany">Холт Маккэллани</string>
     <string name="actor_name_josh_hartnett">Джош Харнетт</string>
+    <string name="main_empty_message">empty toast</string>
 </resources>
