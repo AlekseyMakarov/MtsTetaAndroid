@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.mtstetaandroid.R
 
 class UserFragment : Fragment() {
@@ -19,7 +17,7 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_user, container, false)
-        val textView: TextView = root.findViewById(R.id.text_user)
+        val textView: TextView = root.findViewById(R.id.textUser)
         textView.text = "This is User fragment"
         return root
     }

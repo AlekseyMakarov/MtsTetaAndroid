@@ -20,7 +20,7 @@ import com.example.mtstetaandroid.data.dto.MovieDto
 class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     private var movies: List<MovieDto>? = null
     private var scaledRatingDrawable: Drawable? = null
-    private var callback: ((MovieDto?) -> Unit)? = null
+    private var callback: ((MovieDto) -> Unit)? = null
 
     private fun createScaledRatingDrawable(context: Context): Drawable {
         val starEmptyBitmap = getDrawable(context, R.drawable.ic_star_empty)?.toBitmap()
@@ -70,7 +70,7 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         this.movies = movies
     }
 
-    fun setOnClickListener(callback: (MovieDto?) -> Unit): Unit {
+    fun setOnClickListener(callback: (MovieDto) -> Unit): Unit {
         this.callback = callback
     }
 
@@ -85,15 +85,15 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         private val movieAgeRestriction: TextView =
             itemView.findViewById(R.id.textViewMovieAgeRestrictions)
 
-        fun bind(Movie: MovieDto, callback: ((MovieDto?) -> Unit)?) {
-            movieImage.load(Movie.imageUrl) {
+        fun bind(movie: MovieDto, callback: ((MovieDto) -> Unit)?) {
+            movieImage.load(movie.imageUrl) {
                 allowHardware(false)
             }
-            movieTitle.text = Movie.title
-            movieDescription.text = Movie.description
-            movieRating.rating = Movie.rateScore.toFloat()
-            movieAgeRestriction.text = Movie.ageRestriction.toString() + "+"
-            callback?.let { itemView.setOnClickListener { callback(Movie) } }
+            movieTitle.text = movie.title
+            movieDescription.text = movie.description
+            movieRating.rating = movie.rateScore.toFloat()
+            movieAgeRestriction.text = movie.ageRestriction.toString() + "+"
+            callback?.let { itemView.setOnClickListener { callback(movie) } }
         }
     }
 }
