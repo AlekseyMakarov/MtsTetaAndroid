@@ -68,6 +68,7 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     fun setData(movies: List<MovieDto>): Unit {
         this.movies = movies
+        notifyDataSetChanged()
     }
 
     fun setOnClickListener(callback: (MovieDto) -> Unit): Unit {
