@@ -1,6 +1,5 @@
 package com.example.mtstetaandroid.ui.home
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import com.example.mtstetaandroid.data.GenresModel
 import com.example.mtstetaandroid.data.dto.MovieDto
 import ru.mts.teta.summer.android.homework.list.data.features.movies.GenresDataSourceImpl
 import ru.mts.teta.summer.android.homework.list.data.features.movies.MoviesDataSourceImpl
-import com.example.mtstetaandroid.extensions.dpToPx
 import com.example.mtstetaandroid.ui.movieDetails.DetailsFragment
 
 class HomeFragment : Fragment() {
@@ -27,7 +25,10 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+
+    override fun onViewCreated(root: View, savedInstanceState: Bundle?) {
         val recycler = root.findViewById<RecyclerView>(R.id.recyclerViewGenres)
         initGenresSource()
         val genres = genresModel.getGenres()
@@ -45,7 +46,6 @@ class HomeFragment : Fragment() {
         recyclerMovie.adapter = adapterMovie
         recyclerMovie.layoutManager =
             GridLayoutManager(root.context, 2, RecyclerView.VERTICAL, false)
-        return root
     }
 
 

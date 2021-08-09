@@ -14,9 +14,14 @@ import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.mtstetaandroid.ActorsAdapter
 import com.example.mtstetaandroid.R
+import com.example.mtstetaandroid.data.ActorsModel
 import com.example.mtstetaandroid.data.dto.MovieDto
+import com.example.mtstetaandroid.data.features.movies.ActorsDataSourceImpl
 import com.example.mtstetaandroid.extensions.dpToPx
 
 object BundleKeysConstants {
@@ -31,6 +36,7 @@ object BundleKeysConstants {
 class DetailsFragment : Fragment() {
 
     private var scaledRatingDrawable: Drawable? = null
+    private lateinit var actorsModel: ActorsModel
 
 
     private fun createScaledRatingDrawable(context: Context): Drawable {
@@ -63,6 +69,14 @@ class DetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(root: View, savedInstanceState: Bundle?) {
+        val recycler = root.findViewById<RecyclerView>(R.id.RecyclerViewActors)
+        initActorsSource()
+        val actors = actorsModel.getActors()
+        val adapter = ActorsAdapter()
+        adapter.setData(actors)
+        recycler.adapter = adapter
+        recycler.layoutManager = LinearLayoutManager(root.context, RecyclerView.HORIZONTAL, false)
+
         if (scaledRatingDrawable == null) {
             scaledRatingDrawable = createScaledRatingDrawable(root.context)
         }
@@ -101,6 +115,10 @@ class DetailsFragment : Fragment() {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    private fun initActorsSource() {
+        actorsModel = ActorsModel(ActorsDataSourceImpl())
     }
 
 }
