@@ -28,6 +28,8 @@ class HomeFragment : Fragment() {
 
     val viewModel by activityViewModels<MovieViewModel>()
     private lateinit var genresModel: GenresModel
+    private lateinit var genreAdapter: GenreAdapter
+    private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,19 +45,31 @@ class HomeFragment : Fragment() {
         v.setOnRefreshListener {
             viewModel.refresh()
         }
+        initGenresSource()
+        initAdapters()
+        initRecyclers(root, v)
+    }
+
+    private fun initGenresSource() {
+        genresModel = GenresModel(GenresDataSourceImpl())
+    }
+
+    private fun initAdapters(){
+        val genres = genresModel.getGenres()
+        genreAdapter = GenreAdapter()
+        genreAdapter.setData(genres)
+        movieAdapter = MovieAdapter()
+        movieAdapter.setOnClickListener(::showDetails)
+    }
+
+    private fun  initRecyclers(root: View, v: SwipeRefreshLayout){
         val recycler = root.findViewById<RecyclerView>(R.id.recyclerViewGenres)
         initGenresSource()
-        val genres = genresModel.getGenres()
-        val adapter = GenreAdapter()
-        adapter.setData(genres)
-        recycler.adapter = adapter
+        recycler.adapter = genreAdapter
         recycler.layoutManager = LinearLayoutManager(root.context, RecyclerView.HORIZONTAL, false)
         val recyclerMovie = root.findViewById<RecyclerView>(R.id.recyclerViewMovies)
-        val adapterMovie = MovieAdapter()
-        adapterMovie.setOnClickListener(::showDetails)
-
         recyclerMovie.addItemDecoration(RecyclerDecoration)
-        recyclerMovie.adapter = adapterMovie
+        recyclerMovie.adapter = movieAdapter
         recyclerMovie.layoutManager =
             GridLayoutManager(root.context, 2, RecyclerView.VERTICAL, false)
 
@@ -71,14 +85,10 @@ class HomeFragment : Fragment() {
                 }
                 is MoviesState.SuccessState -> {
                     v.isRefreshing = false
-                    adapterMovie.setData(state.movies)
+                    movieAdapter.setData(state.movies)
                 }
             }
         }
-    }
-
-    private fun initGenresSource() {
-        genresModel = GenresModel(GenresDataSourceImpl())
     }
 
 
