@@ -32,6 +32,38 @@ class DetailsFragment : Fragment() {
 
     private var scaledRatingDrawable: Drawable? = null
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_details, container, false)
+    }
+
+    override fun onViewCreated(root: View, savedInstanceState: Bundle?) {
+        if (scaledRatingDrawable == null) {
+            scaledRatingDrawable = createScaledRatingDrawable(root.context)
+        }
+        val imageView = root.findViewById<ImageView>(R.id.imageView)?.apply {
+            this.load(arguments?.getString(BundleKeysConstants.MOVIE_IMAGE_URL)) {
+                allowHardware(false)
+            }
+        }
+        val textViewAgeRestriction =
+            root.findViewById<TextView>(R.id.textViewMovieAgeRestrictions)?.apply {
+                text = arguments?.getInt(BundleKeysConstants.MOVIE_AGE_RESTRICTION).toString() + "+"
+            }
+        val textViewDescription = root.findViewById<TextView>(R.id.textView)?.apply {
+            text = arguments?.getString(BundleKeysConstants.MOVIE_DESCRIPTION)
+        }
+        val textViewTitle = root.findViewById<TextView>(R.id.textViewFilmName)?.apply {
+            text = arguments?.getString(BundleKeysConstants.MOVIE_TITLE)
+        }
+        val ratingBar = root.findViewById<RatingBar>(R.id.ratingBarMovieRatingDetails).apply {
+            setProgressDrawableTiled(scaledRatingDrawable)
+            rating = arguments?.getInt(BundleKeysConstants.MOVIE_RATE_SCORE)?.toFloat() ?: 0F
+        }
+    }
 
     private fun createScaledRatingDrawable(context: Context): Drawable {
 
@@ -54,41 +86,6 @@ class DetailsFragment : Fragment() {
         return finalDrawable
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false)
-    }
-
-    override fun onViewCreated(root: View, savedInstanceState: Bundle?) {
-        if (scaledRatingDrawable == null) {
-            scaledRatingDrawable = createScaledRatingDrawable(root.context)
-        }
-
-
-        val imageView = root.findViewById<ImageView>(R.id.imageView)?.apply {
-            this.load(arguments?.getString(BundleKeysConstants.MOVIE_IMAGE_URL)) {
-                allowHardware(false)
-            }
-        }
-        val textViewAgeRestriction =
-            root.findViewById<TextView>(R.id.textViewMovieAgeRestrictions)?.apply {
-                text = arguments?.getInt(BundleKeysConstants.MOVIE_AGE_RESTRICTION).toString() + "+"
-            }
-        val textViewDescription = root.findViewById<TextView>(R.id.textView)?.apply {
-            text = arguments?.getString(BundleKeysConstants.MOVIE_DESCRIPTION)
-        }
-        val textViewTitle = root.findViewById<TextView>(R.id.textViewFilmName)?.apply {
-            text = arguments?.getString(BundleKeysConstants.MOVIE_TITLE)
-        }
-        val ratingBar = root.findViewById<RatingBar>(R.id.ratingBarMovieRatingDetails).apply {
-            setProgressDrawableTiled(scaledRatingDrawable)
-            rating = arguments?.getInt(BundleKeysConstants.MOVIE_RATE_SCORE)?.toFloat()?:0F
-        }
-    }
-
     companion object {
         fun newInstance(movie: MovieDto): DetailsFragment {
             val args = Bundle()
@@ -102,5 +99,4 @@ class DetailsFragment : Fragment() {
             return fragment
         }
     }
-
 }

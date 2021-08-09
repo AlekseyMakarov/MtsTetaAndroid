@@ -10,7 +10,6 @@ import com.example.mtstetaandroid.R
 
 class UserFragment : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
