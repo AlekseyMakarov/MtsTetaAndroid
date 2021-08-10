@@ -28,10 +28,11 @@ class MovieViewModel() : ViewModel() {
             _movies.postValue(MoviesState.LoadingState)
 
             try {
+                lateinit var movies: List<MovieDto>
                 withContext(Dispatchers.IO) {
-                    val movies = dataProvider.getMovies()
-                    _movies.postValue(MoviesState.SuccessState(movies))
+                    movies = dataProvider.getMovies()
                 }
+                _movies.setValue(MoviesState.SuccessState(movies))
 
             } catch (t: Throwable) {
                 _movies.postValue(MoviesState.ErrorState)
