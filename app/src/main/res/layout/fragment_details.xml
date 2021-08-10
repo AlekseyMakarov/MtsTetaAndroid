@@ -24,62 +24,15 @@
         app:shapeAppearanceOverlay="@style/ImageView.Corner"
         app:srcCompat="@drawable/image_jason_statham" />
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/viewHomeTab"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@id/viewUserTab"-->
-<!--        app:layout_constraintStart_toStartOf="parent">-->
-
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="2dp"-->
-<!--            android:background="#020202"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageViewHome"-->
-<!--            android:layout_width="17dp"-->
-<!--            android:layout_height="17dp"-->
-<!--            android:adjustViewBounds="true"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:srcCompat="@drawable/ic_home" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/viewUserTab"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toEndOf="@id/viewHomeTab">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageViewUser"-->
-<!--            android:layout_width="17dp"-->
-<!--            android:layout_height="17dp"-->
-<!--            android:adjustViewBounds="true"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:srcCompat="@drawable/ic_user" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="260dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="260dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -87,7 +40,6 @@
             android:background="@drawable/bg_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
-
 
             <TextView
                 android:id="@+id/textViewMovieAgeRestrictions"
@@ -147,11 +99,12 @@
                 app:layout_constraintBottom_toTopOf="@id/ratingBarMovieRatingDetails"
                 app:layout_constraintStart_toStartOf="parent" />
 
-
             <RatingBar
                 android:id="@+id/ratingBarMovieRatingDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
                 android:clickable="false"
                 android:isIndicator="true"
                 android:minWidth="0dp"
@@ -161,60 +114,7 @@
                 android:rating="3"
                 android:stepSize="0.5"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="20dp"/>
-
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar1"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:srcCompat="@drawable/ic_star" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar2"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toEndOf="@id/imageViewStar1"-->
-<!--                app:srcCompat="@drawable/ic_star" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar3"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toEndOf="@id/imageViewStar2"-->
-<!--                app:srcCompat="@drawable/ic_star" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar4"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toEndOf="@id/imageViewStar3"-->
-<!--                app:srcCompat="@drawable/ic_star" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar5"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toEndOf="@id/imageViewStar4"-->
-<!--                app:srcCompat="@drawable/ic_star_empty" />-->
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView"
@@ -241,8 +141,6 @@
                 app:layout_constraintBottom_toTopOf="@id/RecyclerViewActors"
                 app:layout_constraintStart_toStartOf="parent" />
 
-
-
             <androidx.recyclerview.widget.RecyclerView
 
                 android:id="@+id/RecyclerViewActors"
@@ -252,134 +150,7 @@
                 android:fillViewport="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-            </androidx.recyclerview.widget.RecyclerView>
-<!--            <HorizontalScrollView-->
-
-<!--                android:id="@+id/horizontalScrollViewActors"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="40dp"-->
-<!--                android:fillViewport="true"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    app:layout_constraintHorizontal_bias="1.0">-->
-
-<!--                    <androidx.cardview.widget.CardView-->
-<!--                        android:id="@+id/cardViewActor1"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="20dp"-->
-<!--                        app:cardBackgroundColor="@android:color/transparent"-->
-<!--                        app:cardElevation="0dp">-->
-
-<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content">-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/imageViewActor1"-->
-<!--                                android:layout_width="150dp"-->
-<!--                                android:layout_height="196dp"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toTopOf="parent"-->
-<!--                                app:srcCompat="@drawable/image_jason_statham_actor" />-->
-
-<!--                            <TextView-->
-<!--                                android:id="@+id/textViewActorName1"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="12dp"-->
-<!--                                android:text="@string/actor_name_jason_statham"-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="12sp"-->
-<!--                                android:textStyle="bold"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toBottomOf="@id/imageViewActor1" />-->
-<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--                    </androidx.cardview.widget.CardView>-->
-
-<!--                    <androidx.cardview.widget.CardView-->
-<!--                        android:id="@+id/cardViewActor2"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="10dp"-->
-<!--                        app:cardBackgroundColor="@android:color/transparent"-->
-<!--                        app:cardElevation="0dp">-->
-
-<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content">-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/imageViewActor2"-->
-<!--                                android:layout_width="150dp"-->
-<!--                                android:layout_height="196dp"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toTopOf="parent"-->
-<!--                                app:srcCompat="@drawable/image_holt_mccallany_actor" />-->
-
-<!--                            <TextView-->
-<!--                                android:id="@+id/textViewActorName2"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="12dp"-->
-<!--                                android:text="@string/actor_name_holt_mc_callany"-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="12sp"-->
-<!--                                android:textStyle="bold"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toBottomOf="@id/imageViewActor2" />-->
-<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--                    </androidx.cardview.widget.CardView>-->
-
-<!--                    <androidx.cardview.widget.CardView-->
-<!--                        android:id="@+id/cardViewActor3"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="10dp"-->
-<!--                        android:layout_marginEnd="20dp"-->
-<!--                        app:cardBackgroundColor="@android:color/transparent"-->
-<!--                        app:cardElevation="0dp">-->
-
-<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content">-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/imageViewActor3"-->
-<!--                                android:layout_width="150dp"-->
-<!--                                android:layout_height="196dp"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toTopOf="parent"-->
-<!--                                app:srcCompat="@drawable/image_josh_hartnett_actor" />-->
-
-<!--                            <TextView-->
-<!--                                android:id="@+id/textViewActorName3"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="12dp"-->
-<!--                                android:text="@string/actor_name_josh_hartnett"-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="12sp"-->
-<!--                                android:textStyle="bold"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toBottomOf="@id/imageViewActor3" />-->
-<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--                    </androidx.cardview.widget.CardView>-->
-
-
-<!--                </LinearLayout>-->
-<!--            </HorizontalScrollView>-->
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
