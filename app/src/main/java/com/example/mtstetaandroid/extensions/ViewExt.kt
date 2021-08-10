@@ -1,4 +1,4 @@
-package com.example.mtstetaandroid
+package com.example.mtstetaandroid.extensions
 
 import android.content.Context
 import android.util.TypedValue

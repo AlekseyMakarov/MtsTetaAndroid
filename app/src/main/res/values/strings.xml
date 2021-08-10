@@ -10,4 +10,7 @@
     <string name="actor_name_holt_mc_callany">Холт Маккэллани</string>
     <string name="actor_name_josh_hartnett">Джош Харнетт</string>
     <string name="main_empty_message">empty toast</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_user">User</string>
 </resources>
