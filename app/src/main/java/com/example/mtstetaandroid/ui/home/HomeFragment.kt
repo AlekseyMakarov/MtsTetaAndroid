@@ -13,8 +13,6 @@ import com.example.mtstetaandroid.*
 import com.example.mtstetaandroid.data.GenresModel
 import com.example.mtstetaandroid.data.dto.MovieDto
 import ru.mts.teta.summer.android.homework.list.data.features.movies.GenresDataSourceImpl
-import ru.mts.teta.summer.android.homework.list.data.features.movies.MoviesDataSourceImpl
-import com.example.mtstetaandroid.extensions.dpToPx
 import com.example.mtstetaandroid.ui.movieDetails.DetailsFragment
 import androidx.fragment.app.activityViewModels
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
