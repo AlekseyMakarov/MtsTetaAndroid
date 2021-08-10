@@ -14,10 +14,10 @@
 
         <ImageButton
             android:id="@+id/imageButtonSearch"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
+            android:layout_width="@dimen/search_button_width"
+            android:layout_height="@dimen/search_button_height"
+            android:layout_marginTop="@dimen/search_button_margin_top"
+            android:layout_marginEnd="@dimen/search_button_margin_end"
             android:background="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,8 +27,8 @@
             android:id="@+id/textViewPopular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginStart="@dimen/text_popular_margin_start"
+            android:layout_marginTop="@dimen/text_popular_margin_top"
             android:text="Популярное сейчас"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -40,7 +40,7 @@
             android:id="@+id/recyclerViewGenres"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/genres_recycler_margin_top"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewPopular" />
 
@@ -48,7 +48,7 @@
             android:id="@+id/recyclerViewMovies"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/movie_recycler_margin_top"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

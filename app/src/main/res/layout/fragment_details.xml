@@ -165,57 +165,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"/>
 
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar1"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:srcCompat="@drawable/ic_star" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar2"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toEndOf="@id/imageViewStar1"-->
-<!--                app:srcCompat="@drawable/ic_star" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar3"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toEndOf="@id/imageViewStar2"-->
-<!--                app:srcCompat="@drawable/ic_star" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar4"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toEndOf="@id/imageViewStar3"-->
-<!--                app:srcCompat="@drawable/ic_star" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageViewStar5"-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="15dp"-->
-<!--                android:layout_marginStart="2dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView"-->
-<!--                app:layout_constraintStart_toEndOf="@id/imageViewStar4"-->
-<!--                app:srcCompat="@drawable/ic_star_empty" />-->
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="0dp"
