@@ -1,6 +1,7 @@
 package com.example.mtstetaandroid.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,13 +13,21 @@ import com.example.mtstetaandroid.*
 import com.example.mtstetaandroid.data.GenresModel
 import com.example.mtstetaandroid.data.dto.MovieDto
 import ru.mts.teta.summer.android.homework.list.data.features.movies.GenresDataSourceImpl
-import ru.mts.teta.summer.android.homework.list.data.features.movies.MoviesDataSourceImpl
 import com.example.mtstetaandroid.ui.movieDetails.DetailsFragment
+import androidx.fragment.app.activityViewModels
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+
+
+object HomeFragmentConstants {
+    const val FRAGMENT_NAME = "HomeFragment"
+}
 
 class HomeFragment : Fragment() {
 
-    private lateinit var moviesModel: MoviesModel
+    val viewModel by activityViewModels<MovieViewModel>()
     private lateinit var genresModel: GenresModel
+    private lateinit var genreAdapter: GenreAdapter
+    private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,32 +38,55 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(root: View, savedInstanceState: Bundle?) {
-        val recycler = root.findViewById<RecyclerView>(R.id.recyclerViewGenres)
+        val v: SwipeRefreshLayout =
+            root.findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayoutHome)
+        v.setOnRefreshListener {
+            viewModel.refresh()
+        }
         initGenresSource()
-        val genres = genresModel.getGenres()
-        val adapter = GenreAdapter()
-        adapter.setData(genres)
-        recycler.adapter = adapter
-        recycler.layoutManager = LinearLayoutManager(root.context, RecyclerView.HORIZONTAL, false)
-        val recyclerMovie = root.findViewById<RecyclerView>(R.id.recyclerViewMovies)
-        initDataSource()
-        val movies = moviesModel.getMovies()
-        val adapterMovie = MovieAdapter()
-        adapterMovie.setOnClickListener(::showDetails)
-        adapterMovie.setData(movies)
-        recyclerMovie.addItemDecoration(RecyclerDecoration)
-        recyclerMovie.adapter = adapterMovie
-        recyclerMovie.layoutManager =
-            GridLayoutManager(root.context, 2, RecyclerView.VERTICAL, false)
-    }
-
-
-    private fun initDataSource() {
-        moviesModel = MoviesModel(MoviesDataSourceImpl())
+        initAdapters()
+        initRecyclers(root, v)
     }
 
     private fun initGenresSource() {
         genresModel = GenresModel(GenresDataSourceImpl())
+    }
+
+    private fun initAdapters(){
+        val genres = genresModel.getGenres()
+        genreAdapter = GenreAdapter()
+        genreAdapter.setData(genres)
+        movieAdapter = MovieAdapter()
+        movieAdapter.setOnClickListener(::showDetails)
+    }
+
+    private fun  initRecyclers(root: View, v: SwipeRefreshLayout){
+        val recycler = root.findViewById<RecyclerView>(R.id.recyclerViewGenres)
+        initGenresSource()
+        recycler.adapter = genreAdapter
+        recycler.layoutManager = LinearLayoutManager(root.context, RecyclerView.HORIZONTAL, false)
+        val recyclerMovie = root.findViewById<RecyclerView>(R.id.recyclerViewMovies)
+        recyclerMovie.addItemDecoration(RecyclerDecoration)
+        recyclerMovie.adapter = movieAdapter
+        recyclerMovie.layoutManager =
+            GridLayoutManager(root.context, 2, RecyclerView.VERTICAL, false)
+
+        viewModel.movies.observe(viewLifecycleOwner) { state: MoviesState ->
+            when (state) {
+                MoviesState.ErrorState -> {
+                    v.isRefreshing = false
+                    Log.e(HomeFragmentConstants.FRAGMENT_NAME, "error occured while loading")
+                }
+                MoviesState.LoadingState -> {
+                    v.isRefreshing = true
+                    Log.i(HomeFragmentConstants.FRAGMENT_NAME, "loading")
+                }
+                is MoviesState.SuccessState -> {
+                    v.isRefreshing = false
+                    movieAdapter.setData(state.movies)
+                }
+            }
+        }
     }
 
 

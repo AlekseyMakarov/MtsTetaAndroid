@@ -38,28 +38,6 @@ class DetailsFragment : Fragment() {
     private var scaledRatingDrawable: Drawable? = null
     private lateinit var actorsModel: ActorsModel
 
-
-    private fun createScaledRatingDrawable(context: Context): Drawable {
-
-        val starEmptyBitmap = AppCompatResources.getDrawable(context, R.drawable.ic_star_empty)
-            ?.toBitmap(context.dpToPx(15F), context.dpToPx(15F))
-        val starBitmap = AppCompatResources.getDrawable(context, R.drawable.ic_star)
-            ?.toBitmap(context.dpToPx(15F), context.dpToPx(15F))
-        val newStarEmptyDrawable = BitmapDrawable(context.resources, starEmptyBitmap)
-        val newStarDrawable = BitmapDrawable(context.resources, starBitmap)
-        val finalDrawable = LayerDrawable(
-            arrayOf(
-                newStarEmptyDrawable,
-                newStarEmptyDrawable,
-                newStarDrawable,
-            )
-        )
-        finalDrawable.setId(0, android.R.id.background)
-        finalDrawable.setId(1, android.R.id.secondaryProgress)
-        finalDrawable.setId(2, android.R.id.progress)
-        return finalDrawable
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -80,8 +58,6 @@ class DetailsFragment : Fragment() {
         if (scaledRatingDrawable == null) {
             scaledRatingDrawable = createScaledRatingDrawable(root.context)
         }
-
-
         val imageView = root.findViewById<ImageView>(R.id.imageView)?.apply {
             this.load(arguments?.getString(BundleKeysConstants.MOVIE_IMAGE_URL)) {
                 allowHardware(false)
@@ -99,8 +75,29 @@ class DetailsFragment : Fragment() {
         }
         val ratingBar = root.findViewById<RatingBar>(R.id.ratingBarMovieRatingDetails).apply {
             setProgressDrawableTiled(scaledRatingDrawable)
-            rating = arguments?.getInt(BundleKeysConstants.MOVIE_RATE_SCORE)?.toFloat()?:0F
+            rating = arguments?.getInt(BundleKeysConstants.MOVIE_RATE_SCORE)?.toFloat() ?: 0F
         }
+    }
+
+    private fun createScaledRatingDrawable(context: Context): Drawable {
+
+        val starEmptyBitmap = AppCompatResources.getDrawable(context, R.drawable.ic_star_empty)
+            ?.toBitmap(context.dpToPx(15F), context.dpToPx(15F))
+        val starBitmap = AppCompatResources.getDrawable(context, R.drawable.ic_star)
+            ?.toBitmap(context.dpToPx(15F), context.dpToPx(15F))
+        val newStarEmptyDrawable = BitmapDrawable(context.resources, starEmptyBitmap)
+        val newStarDrawable = BitmapDrawable(context.resources, starBitmap)
+        val finalDrawable = LayerDrawable(
+            arrayOf(
+                newStarEmptyDrawable,
+                newStarEmptyDrawable,
+                newStarDrawable,
+            )
+        )
+        finalDrawable.setId(0, android.R.id.background)
+        finalDrawable.setId(1, android.R.id.secondaryProgress)
+        finalDrawable.setId(2, android.R.id.progress)
+        return finalDrawable
     }
 
     companion object {

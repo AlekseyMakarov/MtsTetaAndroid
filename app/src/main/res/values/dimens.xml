@@ -1,4 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="design_bottom_navigation_item_max_width" tools:override="true">600dp</dimen>
     <dimen name="design_bottom_navigation_active_item_max_width" tools:override="true">600dp</dimen>
+    <dimen name="search_button_width">20dp</dimen>
+    <dimen name="search_button_height">20dp</dimen>
+    <dimen name="search_button_margin_top">30dp</dimen>
+    <dimen name="search_button_margin_end">20dp</dimen>
+    <dimen name="text_popular_margin_start">20dp</dimen>
+    <dimen name="text_popular_margin_top">76dp</dimen>
+    <dimen name="genres_recycler_margin_top">16dp</dimen>
+    <dimen name="movie_recycler_margin_top">16dp</dimen>
 </resources>
