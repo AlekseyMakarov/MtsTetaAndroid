@@ -100,20 +100,6 @@ class DetailsFragment : Fragment() {
         return finalDrawable
     }
 
-    companion object {
-        fun newInstance(movie: MovieDto): DetailsFragment {
-            val args = Bundle()
-            args.putString(BundleKeysConstants.MOVIE_TITLE, movie.title)
-            args.putString(BundleKeysConstants.MOVIE_DESCRIPTION, movie.description)
-            args.putString(BundleKeysConstants.MOVIE_IMAGE_URL, movie.imageUrl)
-            args.putInt(BundleKeysConstants.MOVIE_AGE_RESTRICTION, movie.ageRestriction)
-            args.putInt(BundleKeysConstants.MOVIE_RATE_SCORE, movie.rateScore)
-            val fragment = DetailsFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
     private fun initActorsSource() {
         actorsModel = ActorsModel(ActorsDataSourceImpl())
     }

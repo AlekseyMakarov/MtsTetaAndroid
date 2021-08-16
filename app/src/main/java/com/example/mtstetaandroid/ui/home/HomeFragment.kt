@@ -15,7 +15,11 @@ import com.example.mtstetaandroid.data.dto.MovieDto
 import ru.mts.teta.summer.android.homework.list.data.features.movies.GenresDataSourceImpl
 import com.example.mtstetaandroid.ui.movieDetails.DetailsFragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.mtstetaandroid.ui.movieDetails.BundleKeysConstants
 
 
 object HomeFragmentConstants {
@@ -91,10 +95,13 @@ class HomeFragment : Fragment() {
 
 
     fun showDetails(movie: MovieDto) {
-        childFragmentManager.beginTransaction().add(
-            R.id.fragment_container_details,
-            DetailsFragment.newInstance(movie)
-        ).addToBackStack(null).commit()
+        val args = Bundle()
+        args.putString(BundleKeysConstants.MOVIE_TITLE, movie.title)
+        args.putString(BundleKeysConstants.MOVIE_DESCRIPTION, movie.description)
+        args.putString(BundleKeysConstants.MOVIE_IMAGE_URL, movie.imageUrl)
+        args.putInt(BundleKeysConstants.MOVIE_AGE_RESTRICTION, movie.ageRestriction)
+        args.putInt(BundleKeysConstants.MOVIE_RATE_SCORE, movie.rateScore)
+        findNavController().navigate(R.id.action_home_fragment_to_details_fragment, args)
     }
 }
 

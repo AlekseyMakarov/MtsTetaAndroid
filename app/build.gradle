@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
@@ -65,3 +67,5 @@ dependencies {
     implementation "io.coil-kt:coil-base:$coil_version"
     implementation "io.coil-kt:coil:$coil_version"
 }
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
