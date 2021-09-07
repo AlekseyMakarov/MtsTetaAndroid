@@ -29,6 +29,7 @@ class MoviesModel(
 			}
 			else -> {
 				delay(1000)
+
 				return moviesDataSource.getMovies().slice(0..7)
 			}
 		}

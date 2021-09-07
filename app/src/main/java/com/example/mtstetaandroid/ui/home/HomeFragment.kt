@@ -16,6 +16,7 @@ import ru.mts.teta.summer.android.homework.list.data.features.movies.GenresDataS
 import com.example.mtstetaandroid.ui.movieDetails.DetailsFragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -101,7 +102,9 @@ class HomeFragment : Fragment() {
         args.putString(BundleKeysConstants.MOVIE_IMAGE_URL, movie.imageUrl)
         args.putInt(BundleKeysConstants.MOVIE_AGE_RESTRICTION, movie.ageRestriction)
         args.putInt(BundleKeysConstants.MOVIE_RATE_SCORE, movie.rateScore)
-        findNavController().navigate(R.id.action_home_fragment_to_details_fragment, args)
+//        activity?.findNavController()
+        activity?.findNavController(R.id.nav_host_fragment)
+            ?.navigate(R.id.action_homeFragment2_to_detailsFragment3, args)
     }
 }
 
