@@ -1,5 +1,6 @@
 package com.example.mtstetaandroid
 
+import com.example.mtstetaandroid.data.MovieEntity
 import com.example.mtstetaandroid.data.dto.MovieDto
 import com.example.mtstetaandroid.data.features.movies.MoviesDataSource
 import com.example.mtstetaandroid.ui.home.DataProvider
@@ -29,7 +30,14 @@ class MoviesModel(
 			}
 			else -> {
 				delay(1000)
-
+				val db= MyApp.getInstance()?.database
+				val movieDao = db?.movieDao()
+				val movies_list = moviesDataSource.getMovies()
+				val movie_entity_list: MutableList<MovieEntity> = mutableListOf<MovieEntity>()
+				for(movie in movies_list){
+					movie_entity_list.add(MovieEntity(movie.title, movie.description, movie.rateScore, movie.ageRestriction, movie.imageUrl))
+				}
+				movieDao?.insertAll(movie_entity_list)
 				return moviesDataSource.getMovies().slice(0..7)
 			}
 		}

@@ -28,20 +28,20 @@ import com.example.mtstetaandroid.data.AppDatabase
 //    }
 //}
 
-class App : Application() {
-    private var database: AppDatabase? = null
+class MyApp : Application() {
+    var database: AppDatabase? = null
     override fun onCreate() {
         super.onCreate()
-        App.Companion.instance = this
+        instance = this
         database = Room.databaseBuilder(this, AppDatabase::class.java, "database")
             .build()
     }
 
     companion object {
-        private var instance: App? = null
+        private var instance: MyApp? = null
 
-        fun getInstance(): App? {
-            return App.Companion.instance
+        fun getInstance(): MyApp? {
+            return instance
         }
     }
 }

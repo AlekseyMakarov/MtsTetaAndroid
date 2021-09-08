@@ -1,5 +1,6 @@
 package com.example.mtstetaandroid.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,11 +10,14 @@ import com.example.mtstetaandroid.data.dto.MovieDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.mts.teta.summer.android.homework.list.data.features.movies.MoviesDataSourceImpl
+import com.example.mtstetaandroid.data.features.movies.MoviesDataSourceImpl
+import com.example.mtstetaandroid.MyApp
 
 class MovieViewModel() : ViewModel() {
 
     var dataProvider: DataProvider = MoviesModel(MoviesDataSourceImpl())
+
+
 
     private val _movies = MutableLiveData<MoviesState>()
     val movies: LiveData<MoviesState>
@@ -26,6 +30,11 @@ class MovieViewModel() : ViewModel() {
     fun refresh() {
         viewModelScope.launch {
             _movies.postValue(MoviesState.LoadingState)
+            val database = MyApp.getInstance()?.database
+            val dbDao = database?.movieDao()
+            val sss = dbDao?.getAllmovies()?.size.toString()
+            val ss = 4
+
 
             try {
                 lateinit var movies: List<MovieDto>

@@ -1,4 +1,4 @@
-package ru.mts.teta.summer.android.homework.list.data.features.movies
+package com.example.mtstetaandroid.data.features.movies
 
 import com.example.mtstetaandroid.data.features.movies.MoviesDataSource
 import com.example.mtstetaandroid.data.dto.MovieDto
